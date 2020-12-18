@@ -62,7 +62,7 @@ def start(update, context):
     update.message.reply_text(f'কিরে চুদির ভাই XD Hi and welcome! I am {name}.\nWell, actually I am a bot. blip. blup.\nWhatever, My dev completed his {degree} in {dept} from {institution}, {country}. \n\nTo know more about me or get in touch with me please enter /contact.\n\nFor more please enter /help or /tools')
 
 def contact(update, context):
-    update.message.reply_text(f'If you want to know him better or have any query you can contact him:\nPhone: {phone}\nDiscord: {discord}\nMail: {mail}\nLinkedIn: {linkedin}\nYoutube: {youtube}\nGithub: {github}\nMyblog: {myblog}\n\nNot sure what to do? use /help or /tools \n\n\n IF YOU PLAY CS USE /rank TO KNOW YOUR RANK')
+    update.message.reply_text(f'If you want to know him better or have any query you can contact him:\nPhone: {phone}\nDiscord: {discord}\nMail: {mail}\nLinkedIn: {linkedin}\nYoutube: {youtube}\nGithub: {github}\nMyblog: {myblog}\n\nNot sure what to do? use /help or /tools.')
 
 
 def help(update, context):
@@ -72,9 +72,6 @@ def help(update, context):
 
 def tools(update, context):
     update.message.reply_text('Available tools:\nUse /set <seconds> to set a timer\nUse /unset to cancel any existing timer')
-
-def rank(update, context):
-    update.message.reply_text('STUPID SILVER NOOB GGEZ')
 
 
 
@@ -140,7 +137,6 @@ def main():
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help))
     dp.add_handler(CommandHandler("contact", contact))
-    dp.add_handler(CommandHandler("rank", rank))
 
     dp.add_handler(CommandHandler("tools", tools))
     dp.add_handler(CommandHandler("set", set_timer))
