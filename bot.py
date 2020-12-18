@@ -18,6 +18,35 @@ bot.
 import logging
 from telegram import Update
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
+import configparser 
+
+'''reading config file'''
+
+configParser = configparser.ConfigParser()   
+configParser.read('config.ini')
+
+
+
+
+
+'''importing data'''
+name = configParser.get('MyInfo', 'name')
+institution = configParser.get('MyInfo', 'institution')
+degree = configParser.get('MyInfo', 'degree')
+year = configParser.get('MyInfo', 'year')
+dept = configParser.get('MyInfo', 'dept')
+country = configParser.get('MyInfo', 'country')
+
+
+phone = configParser.get('contacts', 'phone')
+discord = configParser.get('contacts', 'discord')
+mail = configParser.get('contacts', 'mail')
+linkedin = configParser.get('contacts', 'linkedin')
+youtube = configParser.get('contacts', 'youtube')
+github = configParser.get('contacts', 'github')
+myblog = configParser.get('contacts', 'myblog')
+
+
 
 # Enable logging
 logging.basicConfig(format='%(levelname)s - %(message)s',
@@ -25,17 +54,18 @@ logging.basicConfig(format='%(levelname)s - %(message)s',
 logger = logging.getLogger(__name__)
 
 
-# Define a few command handlers. These usually take the two arguments update and
-# context. Error handlers also receive the raised TelegramError object in error.
+
 
 def start(update, context):
-    """Send a message when the command /start is issued."""
-    update.message.reply_text('Hi! I am Fahim Shahriar.Well, actually I am a bot. blup.')
+    update.message.reply_text(f'কিরে চুদির ভাই XD Hi and welcome! I am {name}.\nWell, actually I am a bot. blip. blup.\nWhatever, My dev completed his {degree} in {dept} from {institution}, {country}. \n\nTo know more about me or get in touch with me please enter /contact.\n\nFor more please enter /help or /tools')
+
+def contact(update, context):
+    update.message.reply_text(f'If you want to know him better or have any query you can contact him:\nPhone: {phone}\nDiscord: {discord}\nMail: {mail}\nLinkedIn: {linkedin}\nYoutube: {youtube}\nGithub: {github}\nMyblog: {myblog}\n\nNot sure what to do? use /help or /tools')
 
 
 def help(update, context):
     '''help message prints'''
-    update.message.reply_text('Enter the commands as needed:\n/about to know about me\n/help print this help message\n/tools to see available tools and their usage')
+    update.message.reply_text('This is a bot. Enter the commands as needed:\n/about to know about me\n/help print this help message\n/tools to see available tools and their usage')
 
 
 def tools(update, context):
@@ -104,6 +134,7 @@ def main():
     # on different commands - answer in Telegram
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help))
+    dp.add_handler(CommandHandler("contact", contact))
 
     dp.add_handler(CommandHandler("tools", tools))
     dp.add_handler(CommandHandler("set", set_timer))
