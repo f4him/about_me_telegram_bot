@@ -1,20 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-
-"""
-Simple Bot to reply to Telegram messages.
-
-First, a few handler functions are defined. Then, those functions are passed to
-the Dispatcher and registered at their respective places.
-Then, the bot is started and runs until we press Ctrl-C on the command line.
-
-Usage:
-Basic Echobot example, repeats messages.
-Press Ctrl-C on the command line or send a signal to the process to stop the
-bot.
-"""
-
 import logging
 from telegram import Update
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
@@ -29,7 +15,7 @@ configParser.read('config.ini')
 
 
 
-'''importing data'''
+'''importing data from config file'''
 api_key = configParser.get('BOTAPI', 'API_KEY')
 
 name = configParser.get('MyInfo', 'name')
@@ -50,7 +36,7 @@ myblog = configParser.get('contacts', 'myblog')
 
 
 
-# Enable logging
+# Enable logging in the backend
 logging.basicConfig(format='%(levelname)s - %(message)s',
                     level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -59,14 +45,13 @@ logger = logging.getLogger(__name__)
 
 
 def start(update, context):
-    update.message.reply_text(f'Hi and welcome! I am {name}.\nWell, actually I am a bot. blip. blup.\nWhatever, My dev completed his {degree} in {dept} from {institution}, {country}. \n\nTo know more about me or get in touch with me please enter /contact.\n\nFor more please enter /help or /tools')
+    update.message.reply_text(f'Hi and welcome! I am {name}.\nWell, actually I am a bot. blip. blup.\nWhatever, My dev completed his {degree} in {dept} from {institution}, {country}. \n\nTo know more about him or get in touch with him please enter /contact.\n\nFor more please enter /help or /tools')
 
 def contact(update, context):
     update.message.reply_text(f'If you want to know him better or have any query you can contact him:\nPhone: {phone}\nDiscord: {discord}\nMail: {mail}\nLinkedIn: {linkedin}\nYoutube: {youtube}\nGithub: {github}\nMyblog: {myblog}\n\nNot sure what to do? use /help or /tools.')
 
 
 def help(update, context):
-    '''help message prints'''
     update.message.reply_text('This is a bot. Enter the commands as needed:\n/about to know about me\n/help print this help message\n/tools to see available tools and their usage')
 
 
