@@ -30,6 +30,8 @@ configParser.read('config.ini')
 
 
 '''importing data'''
+api_key = configParser.get('BOTAPI', 'API_KEY')
+
 name = configParser.get('MyInfo', 'name')
 institution = configParser.get('MyInfo', 'institution')
 degree = configParser.get('MyInfo', 'degree')
@@ -60,7 +62,7 @@ def start(update, context):
     update.message.reply_text(f'কিরে চুদির ভাই XD Hi and welcome! I am {name}.\nWell, actually I am a bot. blip. blup.\nWhatever, My dev completed his {degree} in {dept} from {institution}, {country}. \n\nTo know more about me or get in touch with me please enter /contact.\n\nFor more please enter /help or /tools')
 
 def contact(update, context):
-    update.message.reply_text(f'If you want to know him better or have any query you can contact him:\nPhone: {phone}\nDiscord: {discord}\nMail: {mail}\nLinkedIn: {linkedin}\nYoutube: {youtube}\nGithub: {github}\nMyblog: {myblog}\n\nNot sure what to do? use /help or /tools')
+    update.message.reply_text(f'If you want to know him better or have any query you can contact him:\nPhone: {phone}\nDiscord: {discord}\nMail: {mail}\nLinkedIn: {linkedin}\nYoutube: {youtube}\nGithub: {github}\nMyblog: {myblog}\n\nNot sure what to do? use /help or /tools \n\n\n IF YOU PLAY CS USE /rank TO KNOW YOUR RANK')
 
 
 def help(update, context):
@@ -70,6 +72,9 @@ def help(update, context):
 
 def tools(update, context):
     update.message.reply_text('Available tools:\nUse /set <seconds> to set a timer\nUse /unset to cancel any existing timer')
+
+def rank(update, context):
+    update.message.reply_text('STUPID SILVER NOOB GGEZ')
 
 
 
@@ -126,7 +131,7 @@ def main():
     # Create the Updater and pass it your bot's token.
     # Make sure to set use_context=True to use the new context based callbacks
     # Post version 12 this will no longer be necessary
-    updater = Updater("1479652882:AAFNKjBzrwG7ReyNMIo7JCnX27BmO4Tfvt8", use_context=True)
+    updater = Updater(api_key, use_context=True)
 
     # Get the dispatcher to register handlers
     dp = updater.dispatcher
@@ -135,6 +140,7 @@ def main():
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help))
     dp.add_handler(CommandHandler("contact", contact))
+    dp.add_handler(CommandHandler("rank", rank))
 
     dp.add_handler(CommandHandler("tools", tools))
     dp.add_handler(CommandHandler("set", set_timer))
