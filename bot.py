@@ -59,7 +59,7 @@ logger = logging.getLogger(__name__)
 
 
 def start(update, context):
-    update.message.reply_text(f'কিরে চুদির ভাই XD Hi and welcome! I am {name}.\nWell, actually I am a bot. blip. blup.\nWhatever, My dev completed his {degree} in {dept} from {institution}, {country}. \n\nTo know more about me or get in touch with me please enter /contact.\n\nFor more please enter /help or /tools')
+    update.message.reply_text(f'Hi and welcome! I am {name}.\nWell, actually I am a bot. blip. blup.\nWhatever, My dev completed his {degree} in {dept} from {institution}, {country}. \n\nTo know more about me or get in touch with me please enter /contact.\n\nFor more please enter /help or /tools')
 
 def contact(update, context):
     update.message.reply_text(f'If you want to know him better or have any query you can contact him:\nPhone: {phone}\nDiscord: {discord}\nMail: {mail}\nLinkedIn: {linkedin}\nYoutube: {youtube}\nGithub: {github}\nMyblog: {myblog}\n\nNot sure what to do? use /help or /tools.')
