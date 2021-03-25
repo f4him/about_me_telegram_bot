@@ -5,7 +5,7 @@ This is a simple bot which might act like a super simple CV or smart resume for 
 
 ### Features:
 
-Til now it has the following features. 
+Till now it has the following features. 
   - A simple config file where you put all your info.
   - Run the bot.
   - Issue commands like /start, /contact etc to fetch your info. 
